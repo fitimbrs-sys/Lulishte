@@ -1,0 +1,659 @@
+/* ===========================
+   Color Palette & Variables
+   =========================== */
+:root {
+    --primary: #667eea;
+    --primary-dark: #5568d3;
+    --secondary: #764ba2;
+    --accent: #f093fb;
+    --success: #48bb78;
+    --warning: #ed8936;
+    --danger: #f56565;
+    --light-bg: #f7fafc;
+    --dark-bg: #1a202c;
+    --card-bg: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    --border: #e2e8f0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================
+   Reset & Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ===========================
+   Container & Layout
+   =========================== */
+.joke-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--light-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.joke-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.joke-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.joke-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.joke-main {
+    padding: 40px 20px;
+}
+
+/* ===========================
+   Joke Display Card
+   =========================== */
+.joke-display {
+    margin-bottom: 40px;
+}
+
+.joke-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.joke-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.joke-type-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.joke-content {
+    min-height: 120px;
+    margin: 20px 0;
+}
+
+.joke-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    animation: fadeIn 0.5s ease;
+}
+
+.joke-punchline {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--secondary);
+    font-weight: 600;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--border);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 12px 28px;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--accent);
+    color: white;
+    padding: 12px 28px;
+}
+
+.btn-secondary:hover {
+    background: #f078f0;
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    background: var(--light-bg);
+    color: var(--primary);
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+    border: 2px solid var(--border);
+}
+
+.btn-icon:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    background: var(--danger);
+    color: white;
+}
+
+.btn-small:hover {
+    background: #e53e3e;
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   Joke Actions
+   =========================== */
+.joke-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+}
+
+/* ===========================
+   Options Section
+   =========================== */
+.joke-options {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.option-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.option-group select {
+    padding: 10px 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-group select:hover {
+    border-color: var(--primary);
+}
+
+.option-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.option-group.checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.option-group.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+/* ===========================
+   Statistics
+   =========================== */
+.joke-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ===========================
+   History Section
+   =========================== */
+.joke-history {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.joke-history h2 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.history-item {
+    background: var(--light-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), transparent);
+    transform: translateX(5px);
+}
+
+.history-item-text {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.history-item-time {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 30px 20px;
+    font-style: italic;
+}
+
+.history-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--border);
+}
+
+#clearHistoryBtn {
+    align-self: flex-end;
+    margin-top: 15px;
+}
+
+/* ===========================
+   Scrollbar Styling
+   =========================== */
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 10px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.joke-footer {
+    background: var(--dark-bg);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    border-top: 2px solid var(--border);
+}
+
+.joke-footer p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.joke-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.joke-footer a:hover {
+    text-decoration: underline;
+}
+
+.joke-footer i {
+    color: var(--danger);
+}
+
+/* ===========================
+   Toast Notification
+   =========================== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    background: var(--success);
+}
+
+.toast.error {
+    background: var(--danger);
+}
+
+.toast.warning {
+    background: var(--warning);
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 768px) {
+    .joke-header h1 {
+        font-size: 2rem;
+    }
+
+    .joke-card {
+        padding: 25px;
+    }
+
+    .joke-text {
+        font-size: 1.1rem;
+    }
+
+    .joke-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .joke-options {
+        grid-template-columns: 1fr;
+    }
+
+    .joke-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item {
+        padding: 20px;
+    }
+
+    .stat-item i {
+        font-size: 1.5rem;
+    }
+
+    .stat-item span {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .joke-container {
+        border-radius: 15px;
+    }
+
+    .joke-header {
+        padding: 25px 15px;
+    }
+
+    .joke-header h1 {
+        font-size: 1.8rem;
+        gap: 10px;
+    }
+
+    .joke-header p {
+        font-size: 1rem;
+    }
+
+    .joke-main {
+        padding: 20px 15px;
+    }
+
+    .joke-card {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .joke-content {
+        min-height: auto;
+    }
+
+    .joke-text {
+        font-size: 1rem;
+    }
+
+    .joke-punchline {
+        font-size: 1rem;
+    }
+
+    .joke-actions {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 16px;
+    }
+
+    .btn-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .joke-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .joke-history {
+        padding: 15px;
+    }
+
+    .joke-history h2 {
+        font-size: 1.2rem;
+    }
+
+    .history-list {
+        max-height: 250px;
+    }
+
+    .history-item {
+        padding: 12px;
+    }
+
+    .toast {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        padding: 12px 15px;
+    }
+}
+
+/* ===========================
+   Loading Animation
+   =========================== */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
